@@ -1,0 +1,8 @@
+
+Sql.select(aimField;Table;conditionName;conditionValue)=
+"select \""&aimFiled&"\" from \""&Table&"\" a where a.\""&conditionName&"\"="&conditionValue
+
+Sql.delete(Table;conditionName;conditionValue)=
+"delete from \""&Table&"\" where \""&conditionName&"\"="&conditionValue
+
+Sql.update(Table;conditionName;conditionValue)=
