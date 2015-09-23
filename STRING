@@ -1,0 +1,11 @@
+
+ListToggle(List;Value)=
+//if Value is in List, delete it. else, add it
+Case (
+  IsEmpty ( InValue ) or InValue = "Empty"; InList;
+  IsEmpty ( InList ) or InList = "Empty"; InValue;
+  IsEmpty ( FilterValues( InList; InValue ) ); InList & "¶" & InValue;
+  Let ( ListMinus = Substitute ( "¶" & InList & "¶"; "¶" & InValue & "¶"; "¶" );
+    Middle ( ListMinus; 2; Length ( ListMinus ) - 2 )
+  )  
+)
