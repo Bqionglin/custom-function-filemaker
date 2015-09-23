@@ -6,3 +6,13 @@ Sql.delete(Table;conditionName;conditionValue)=
 "delete from \""&Table&"\" where \""&conditionName&"\"="&conditionValue
 
 Sql.update(Table;conditionName;conditionValue)=
+"update from \""&Table&"\" set \""&conditionName&"\"="&conditionValue
+
+Sql.insert(Table;listName;listValue)=
+let(
+  [
+  ~subListName=substitute(listName;|;",");
+  ~subListValue=substitute(listValue;|;",")
+  ]
+"insert into\""&Table&"\" ("&~subListName&") values ("&~subListValue&")"
+)
