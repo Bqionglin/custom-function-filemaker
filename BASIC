@@ -1,1 +1,58 @@
 #basic function to import into a new solution
+
+& functionName
+% parameter
+^ content
+
+& NULL
+%
+^ 
+
+& sp
+% i
+^ GetValue(Get(脚本参数);i)
+
+&list_layout
+% 
+^ /*
+  自动计算列表或表单的名称
+  如果当前布局名称以  "表单" 结尾，则返回列表的名称；否则返回表单的布局名称
+  注意： 布局名称必须有规则  如  8005材料列表  8006材料表单
+  */
+  Let(
+  [
+  current_layout=Get ( 布局名称 );
+   type=Right ( current_layout ; 2)
+   ];
+  If (type = "表单" ; esun_Pad ( Middle ( current_layout; 1 ; 4 )-1  ; "0" ;4 ; "L" ) &Middle ( current_layout; 5 ;Length( current_layout)-6 ) & "列表";
+   esun_Pad ( Middle ( current_layout; 1 ; 4 )+1  ; "0" ;4 ; "L" ) &Middle ( current_layout; 5 ;Length( current_layout)-6 ) & "表单" )
+  )
+
+& layout_table
+% 
+^ /*
+  自动计算列表或表单的标签名称
+  如果当前布局名称以  "表单" 结尾，则返回列表的名称；否则返回表单的布局名称
+  注意： 布局名称必须有规则  如  8005材料列表  8006材料表单
+  */
+  Let(
+  [
+  current_layout_table=Get ( 布局表名称 )  
+  ];
+  current_layout_table
+  )
+
+
+& check_empty_or_zero
+% 
+^ /*
+  检查字段是否为空值或0 
+  */
+  Let([  strField=strFieldValue];
+  If (IsEmpty(strField);0; strField ) =0
+  )
+
+
+
+
+
